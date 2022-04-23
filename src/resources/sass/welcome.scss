@@ -1,0 +1,95 @@
+.stepper-container {
+  height: 100vh;
+}
+
+.internal {
+  height: 70vh;
+  position: relative;
+  width: 100%;
+}
+
+.vform {
+  height: 416px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  top: 50%;
+  margin-left: -12px;
+  transform: translateY(-50%);
+}
+.admform {
+  height: 216px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  top: 50%;
+  margin-left: -12px;
+  transform: translateY(-50%);
+}
+.endForm {
+  height: 300px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  top: 50%;
+  margin-left: -12px;
+  transform: translateY(-50%);
+}
+.next-buttons {
+  position: relative;
+  bottom: 0px;
+  right: 0px;
+}
+
+.right {
+  float: right;
+}
+
+.score {
+  position: relative;
+  float: left;
+  margin-top: -3px;
+  margin-left: 5px;
+}
+
+.lightCard, .darkCard {
+  border: solid 1px;
+}
+
+.lightCard {
+  background-color: #ffffff;
+  color: #333;
+  padding: 10px;
+  margin-bottom: 10px;
+  .lttitle {
+    color: #302c6c;
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+
+.darkCard {
+  border-color: #808089;
+  padding: 10px;
+  margin-bottom: 10px;
+  .dctitle {
+    color:  #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+
+.v-radio {
+  background-color: transparent !important;
+  &:active {
+    background-color: transparent !important;
+  }
+}
+
+.rgroup {
+  width: 450px;
+  margin: 0 auto;
+}

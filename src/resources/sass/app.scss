@@ -1,0 +1,32 @@
+// vuetify
+@import "~vuetify/dist/vuetify.min.css";
+
+// Roboto
+@import '~typeface-roboto/index.css';
+
+// Lobster Font
+@import "~@fontsource/lobster";
+
+// Material Design Icons
+@import "~@mdi/font/scss/materialdesignicons.scss";
+
+// Css Flags
+@import '../css/phoca-flags.css';
+
+// Global variables
+@import './variables';
+
+// Global Mixins
+@import './mixins';
+
+// Gobal Styles
+@import './global.scss';
+
+// Installation
+@import './welcome.scss';
+
+// Login
+@import './login.scss';
+
+// Settings
+@import './settings.scss';

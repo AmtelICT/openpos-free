@@ -1,0 +1,38 @@
+{
+  "name": "openpos-free",
+  "productName": "OpenPOS free",
+  "version": "1.0.0",
+  "description": "Point of sales(POS) and stock managment software built with Laravel/VUEJS & powered by Electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "package-mac": "electron-packager . openpos-free --overwrite --platform=darwin --arch=x64 --no-asar --icon=assets/64x64.png --prune=true --out=release-builds",
+    "package-win": "electron-packager . openpos-free --overwrite --no-asar --platform=win32 --arch=ia32 --icon=assets/64x64.png --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"OpenPOS free\"",
+    "package-linux": "electron-packager . openpos-free --overwrite --no-asar --platform=linux --arch=x64 --icon=assets/64x64.png --prune=true --out=release-builds"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/archlinuxdeveloper/openpos-free.git"
+  },
+  "keywords": [
+    "Openpos",
+    "POS",
+    "Laravel",
+    "Vue",
+    "Electron",
+    "PHP"
+  ],
+  "author": "archlinuxdeveloper",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "electron-packager": "^11.0.1"
+  },
+  "dependencies": {
+    "electron": "^18.0.1",
+    "php-server-manager": "^1.2.1"
+  },
+  "bugs": {
+    "url": "https://github.com/archlinuxdeveloper/openpos-free/issues"
+  },
+  "homepage": "https://github.com/archlinuxdeveloper/openpos-free#readme"
+}

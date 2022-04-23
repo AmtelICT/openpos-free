@@ -1,0 +1,48 @@
+.sidebar {
+  height: calc(100vh) !important;
+  position: fixed;
+  .sidebar-list {
+     /*top: calc(50% - 200px);*/
+    position: relative;
+    height: 486px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .sidebar-list-common {
+    /*top: calc(50% - 200px);*/
+   position: relative;
+   height: 329px;
+   top: 50%;
+   transform: translateY(-50%);
+ }
+}
+.setting-navigation {
+  width: calc(100vw - 108px) !important;
+  margin-left: 108px;
+  background-color: $black !important;
+}
+
+.sidebar-list-content {
+  width: 108px;
+}
+.v-item--active, .v-list-item--active {
+  background-color: $sidebar-active !important;
+}
+.v-navigation-drawer__border {
+  display: none !important;
+}
+.animate__animated.animate__fadeIn,
+.animate__animated.animate__fadeOut
+.animate__animated.animate__fadeInRight,
+.animate__animated.animate__fadeOutRight {
+  --animate-duration: 0.02s !important;
+}
+.center {
+  right: calc(50% + 28px);
+}
+.edit-icon {
+  color: #33b5e5 !important;
+}
+.delete-icon {
+  color: #ff4444 !important;
+}

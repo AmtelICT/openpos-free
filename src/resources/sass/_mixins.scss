@@ -1,0 +1,109 @@
+
+@mixin xs {
+  /*
+  On screens that are 599px wide or less
+  */
+  @media only screen and (max-width: 599px)
+  {@content;} 
+ } 
+ 
+ @mixin sm {
+  /*
+  When the width is between 600px and 959px
+  */
+  @media screen and (max-width: 959px) and (min-width: 600px)
+  {@content;} } // Small devices
+ @mixin md {
+  /*
+  When the width is between 960px and 1263px
+  */
+  @media screen and (min-width: 960px) and (max-width: 1263px)
+  {@content;} } // Medium devices
+ @mixin lg { 
+  /*
+  When the width is between 1264px and 1903px
+  */
+ 
+  @media only screen and (min-width: 1264px) and (max-width: 1903px)
+  {@content;} } // Large devices
+ @mixin xl {
+  
+  /*
+  On screens that are 1904px wide or above
+  */
+ 
+  @media only screen and (min-width:1904px ) 
+  {@content;} } // Extra large devices
+ 
+ 
+  @mixin xs-up {
+  /*
+  On screens that are 600px wide or above
+  */
+  @media only screen and (min-width: 600px)
+  {@content;} 
+ } 
+ 
+ @mixin xs-up {
+  /*
+  On screens that are 960px wide or above
+  */
+  @media only screen and (min-width: 960px)
+  {@content;} 
+ } 
+ 
+ @mixin xs-up {
+  /*
+  On screens that are 960px wide or above
+  */
+  @media only screen and (min-width: 960px)
+  {@content;} 
+ } 
+ 
+ @mixin md-up {
+  /*
+  On screens that are 1264px wide or above
+  */
+  @media only screen and (min-width: 1264px)
+  {@content;} 
+ } 
+ 
+ @mixin lg-up {
+  /*
+  On screens that are 1304px wide or above
+  */
+  @media only screen and (min-width: 1904px)
+  {@content;} 
+ } 
+ 
+ @mixin xs-down {
+  /*
+  On screens that are 599px wide or above
+  */
+  @media only screen and (max-width: 599px)
+  {@content;} 
+ } 
+ 
+ @mixin xs-down {
+  /*
+  On screens that are 959px wide or above
+  */
+  @media only screen and (max-width: 959px)
+  {@content;} 
+ } 
+ 
+ @mixin md-down {
+  /*
+  On screens that are 1363px wide or above
+  */
+  @media only screen and (max-width: 1263px)
+  {@content;} 
+ } 
+ 
+ @mixin lg-down {
+  /*
+  On screens that are 1903px wide or above
+  */
+  @media only screen and (max-width: 1903px)
+  {@content;} 
+ } 
