@@ -45,4 +45,18 @@ class ConfigurationsController extends Controller
 
     return response()->json('', 204 );
   }
+
+  public function index() 
+  {
+    $configuration = Configuration::all()->first();
+    return response()->json($configuration, 200);
+  }
+
+  public function update(Request $request)
+  {
+    $configuration = Configuration::all()->first();
+    $configuration->update($request->all());
+    
+    return response()->json('', 204);
+  }
 }

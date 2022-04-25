@@ -173,8 +173,8 @@
                     </v-col>
                   </v-row>
                 </v-form>
-            </div>
-          </v-card>
+              </div>
+            </v-card>
 
           <div class="right next-buttons">
             <v-btn text>
@@ -328,8 +328,6 @@
         </v-stepper-content>
       </v-stepper-items>
     </v-stepper>
-    
-
   </div>
 </template>
 
@@ -354,7 +352,7 @@ export default {
 
     // Shop Form
     shopname: [
-      v => !!v || 'This field is required'
+      v => !!v || 'Shop name is required'
     ],
     rut: [
       v => !!v || 'This field is required'
@@ -380,10 +378,11 @@ export default {
     
     // Admin Form
     username: [
-      v => !!v || 'This field is required'
+      v => !!v || 'Username is required'
     ],
     email: [
-      v => !!v || 'This field is required'
+      v => !!v || 'Email is required',
+      v => (v.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) || 'Invalid Email address'
     ],
     password: [
       v => !!v || 'A password is required'
@@ -412,6 +411,7 @@ export default {
 
       store_shop:     'welcome/store_shop',
       store_admin:    'welcome/store_admin',
+      completed:      'welcome/checkinstall'
     }),
 
     retrieve_states() {
@@ -446,7 +446,10 @@ export default {
       .then(() => {
         this.store_admin(this.admin_form)
         .then(() => {
-          this.$router.push('/')
+          this.completed()
+          .then(() => {
+            this.$router.push('/')
+          })
         })
       })
     }

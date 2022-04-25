@@ -86,18 +86,18 @@ export default {
       if(this.user.role === 'admin') {
         this.items = [
           {icon: 'mdi-view-dashboard', text: 'Dashboard', route: 'dashboard'},
-          {icon: 'mdi-account-multiple', text: 'Clientes', route: 'customer'},
-          {icon: 'mdi-face-agent', text: 'Empleados', route: 'employee'},
-          {icon: 'mdi-archive-cog', text: 'Inventario', route: 'stock'},
-          {icon: 'mdi-truck', text: 'Proveedores', route: 'provider'},
-          {icon: 'mdi-cog', text: 'Configuracion', route: 'configuration'}
+          {icon: 'mdi-account-multiple', text: 'Customers', route: 'customer'},
+          {icon: 'mdi-face-agent', text: 'Employees', route: 'employee'},
+          {icon: 'mdi-archive-cog', text: 'Stock', route: 'stock'},
+          {icon: 'mdi-truck', text: 'Providers', route: 'provider'},
+          {icon: 'mdi-cog', text: 'Configuration', route: 'configuration'}
         ]
       } else {
         this.items = [
           {icon: 'mdi-view-dashboard', text: 'Dashboard', route: 'dashboard'},
-          {icon: 'mdi-account-multiple', text: 'Clientes', route: 'customer'},
-          {icon: 'mdi-archive-cog', text: 'Inventario', route: 'stock'},
-          {icon: 'mdi-truck', text: 'Proveedores', route: 'provider'}
+          {icon: 'mdi-account-multiple', text: 'Customers', route: 'customer'},
+          {icon: 'mdi-archive-cog', text: 'Stock', route: 'stock'},
+          {icon: 'mdi-truck', text: 'Providers', route: 'provider'}
         ]
       }
     }

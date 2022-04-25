@@ -1,13 +1,13 @@
 <template>
   <div class="employee">   
-    <v-container fluid v-resize="onResize" class="mt-30" style="position:relative">
+    <div class="table-container">
       <!-- Table -->
-      <v-card>     
+      <v-card v-resize="onResize" class="mt-30 vcard-table" elevation="0">     
         <v-card-title>
           <v-text-field
             v-model="search"
             append-icon="mdi-magnify"
-            label="Buscar"
+            label="Search"
             single-line
             hide-details
             class="mt-n2"
@@ -15,9 +15,8 @@
           <v-btn @click.stop="dialog = true, toggle_edition(false)"
             color="success mb-2 float-right ml-4 mt-4">
             <v-icon>mdi-plus</v-icon>
-            Agregar</v-btn>
+            Add</v-btn>
         </v-card-title>
-        <!-- :height="windowSize.y - 64 - 24 - 59 - 36 - 88" -->
         <v-data-table
           :headers="headers"
           :items="employees"
@@ -51,22 +50,22 @@
           </template> 
         </v-data-table>
       </v-card>
-    </v-container>
+    </div>
     <!-- /Table -->
 
     <!-- dialog -->
     <v-dialog v-model="dialog" width="600" persistent>    
       <v-card>
       <v-card-title>
-        <span v-if="!edition">Nuevo empleado</span>
-        <span v-if="edition">Editar empleado</span>
+        <span v-if="!edition">New employee</span>
+        <span v-if="edition">Edit employee</span>
       </v-card-title>
       <v-card-text>
       <v-form ref="form" lazy-validation>
         <v-row>
           <v-col cols="12" md="6">
           <v-text-field
-            label="Nombre de usuario"
+            label="Username"
             :rules="nameRules"
             :error-messages="errors.username"
             v-model="form.username">
@@ -80,7 +79,7 @@
 
           <v-col cols="12" md="6">
           <v-text-field
-            label="Número de caja"
+            label="Cashier number"
             :rules="numberRules"
             v-model="form.terminal">
             <v-icon
@@ -96,7 +95,7 @@
             <!-- If New Employee -->
             <v-text-field
               v-if="!edition"
-              label="Contraseña"
+              label="Password"
               :rules="passwordRules"
               :type="show_password ? 'text' : 'password'"
               :append-icon="show_password ? 'mdi-eye' : 'mdi-eye-off'"
@@ -113,7 +112,7 @@
             <!-- If EditMode -->
             <v-text-field
               v-if="edition"
-              label="Nueva contraseña"
+              label="New password"
               :type="show_password ? 'text' : 'password'"
               :append-icon="show_password ? 'mdi-eye' : 'mdi-eye-off'"
               @click:append="show_password = !show_password"
@@ -131,7 +130,7 @@
           <v-col cols="12" md="6">
           <v-text-field
             type="tel"
-            label="Teléfono"
+            label="Phone"
             :rules="phoneRules"
             v-model="form.phone">
             <v-icon
@@ -146,14 +145,14 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="red" text @click="close">Cancelar</v-btn>
+        <v-btn color="red" text @click="close">Cancel</v-btn>
 
         <!-- If New Employee -->
         <v-btn v-if="!edition" 
           color="green" text 
           @click="submit_record"
           ref="save_btn">
-          Guardar
+          Save
         </v-btn>
         <!-- /If New Employee -->
 
@@ -162,7 +161,7 @@
           color="green" text 
           @click="update_record"
           ref="save_btn">
-          Guardar cambios
+          Save changes
         </v-btn>
         <!-- /If EditMode -->
 
@@ -180,7 +179,7 @@
           text
           v-bind="attrs"
           @click="snackbar = false">
-          Cerrar
+          Close
         </v-btn>
       </template>
     </v-snackbar>
@@ -189,10 +188,10 @@
     <!-- delete confirmation -->
     <v-dialog v-model="confirmation" max-width="435px">
       <v-card>
-        <v-card-title class="text-h5">Seguro quieres borrar este registro?</v-card-title>
+        <v-card-title class="text-h5">Really do you want to delete this?</v-card-title>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="red" text @click="close_dialog">Cancelar</v-btn>
+          <v-btn color="red" text @click="close_dialog">Cancel</v-btn>
           <v-btn color="green" text @click="delete_item">OK</v-btn>
           <v-spacer></v-spacer>
         </v-card-actions>
@@ -226,18 +225,18 @@ export default {
     },
 
     nameRules: [
-      v => !!v || 'Se requiere un nombre de usuario'
+      v => !!v || 'Username is required'
     ],
     passwordRules: [
-      v => !!v || 'Se requiere una contraseña'
+      v => !!v || 'Password is required'
     ],
     numberRules: [
-      v => !!v || 'Se requiere asignar una caja',
-      v => /^\d+$/.test(v) || 'Debe ser un valor númerico',
+      v => !!v || 'You must assign a cashier number',
+      v => /^\d+$/.test(v) || 'It has to be a numeric value',
     ],
     phoneRules: [
-      v => !!v || 'Se requiere un número de contacto',
-      v => /^\d+$/.test(v) || 'Debe ser un valor númerico',
+      v => !!v || 'Contact info is required',
+      v => /^\d+$/.test(v) || 'It has to be a numeric value',
     ]
   }),
   computed: {
@@ -252,36 +251,36 @@ export default {
     headers () {
       return [
         {
-          text: 'Nombre',
-          align: 'start',
+          text:     'Name',
+          align:    'start',
           sortable: false,
-          value: 'username',
-          width: '25%'
+          value:    'username',
+          width:    '25%'
         },
         {
-          text: 'Caja',
+          text:  'Cashier',
           value: 'terminal',
           align: 'left', 
           width: '25%'
         },
         { 
-          text: 'Fecha de ingreso', 
+          text:  'Date of admission', 
           value: 'created_at', 
           align: 'left', 
           width: '25%'
         },
         { 
-          text: 'Contacto', 
-          value: 'phone', 
+          text:     'Contact', 
+          value:    'phone', 
           sortable: false, 
-          width: '25%' 
+          width:    '25%' 
         },
         { 
-          text: 'Acciónes', 
-          value: 'actions', 
+          text:     'Actions', 
+          value:    'actions', 
           sortable: false, 
-          align: 'center', 
-          width: '110px' 
+          align:    'center', 
+          width:    '110px' 
         },
       ]
     }
@@ -328,7 +327,7 @@ export default {
         this.register(this.form)
         .then(() => {
           if(this.created === true) {
-            this.text = `Se ha registrado un nuevo empleado!`
+            this.text = `A new employee was succesful added !`
             this.snackbar = true
             this.close()
           }
@@ -348,7 +347,7 @@ export default {
     update_record() {
       this.update(this.form)
       .then(() => {
-        this.text = `Se ha actualizado un registro!`
+        this.text = `A registry was updated !`
         this.snackbar = true
         this.close()
       })

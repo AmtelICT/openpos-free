@@ -17,14 +17,14 @@
               </div>
 
               <p class="login-subtitle">
-                Sistema de punto de venta y control de stock 
+                Point of sales software and stock managment 
               </p>
             </v-card-text>
 
             <v-card-text class="form-container">
               <v-form ref="form" lazy-validation>
                 <v-text-field
-                  label="Nombre de usuario"
+                  label="Username"
                   :rules="nameRules"
                   :error-messages="errors.username"
                   v-model="form.username">
@@ -36,7 +36,7 @@
                 </v-text-field>
 
                 <v-text-field
-                  label="Contraseña"
+                  label="Password"
                   :type="show_password ? 'text' : 'password'"
                   :append-icon="show_password ? 'mdi-eye' : 'mdi-eye-off'"
                   @click:append="show_password = !show_password"
@@ -54,7 +54,7 @@
 
             <v-card-actions class="login-actions">
               <p class="password-link">
-                Olvidaste tu contraseña?
+                Forgot your password?
               </p>  
               <v-btn
                 color="green accent-4"

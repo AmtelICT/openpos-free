@@ -38,20 +38,20 @@ const location = {
       .catch((errors) => {
         console.log(errors.response.data.errors)
       })
-    },
+    }
   },
 
   mutations: {
     SET_COUNTRIES(state, payload) {
-      return state.countries = payload
+      state.countries = payload
     },
 
     SET_STATES(state, payload) {
-      return state.states = payload
+      state.states = payload
     },
 
     SET_CITIES(state, payload) {
-      return state.cities = payload
+      state.cities = payload
     }
   },
 

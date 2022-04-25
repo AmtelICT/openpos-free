@@ -1,0 +1,37 @@
+.configuration {
+  width: 100%;
+  height: calc(100vh - 48px);
+  position: absolute;
+  background-color: #1e1e1e;
+}
+
+.internal-form {
+  height: 80vh;
+  position: relative;
+  width: 100%;
+  top: 14px;
+  border-radius: 0 !important;
+}
+
+.configuration-form {
+  height: 470px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  margin-left: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.update_conf {
+  position: absolute;
+  right: 0;
+  bottom: -50px;
+}
+
+.vcard-container {
+  position:absolute;
+  border-radius: 0 !important;
+  width: 100%;
+  height: calc(100vh - 48px);
+}

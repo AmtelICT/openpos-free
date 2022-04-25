@@ -27,3 +27,10 @@ background-color: #202124 ;//$black;
 .v-messages__message {
 color: #ff5252 !important;
 }
+
+.v-radio {
+  background-color: transparent !important;
+  &:active {
+    background-color: transparent !important;
+  }
+}

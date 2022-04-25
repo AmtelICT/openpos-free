@@ -22,4 +22,11 @@ class CountriesController extends Controller
 
     return response()->json($country);
   }
+
+  public function show($id)
+  {
+    $country = Country::where('id', '=', $id)->first();
+
+    return response()->json($country, 200);
+  }
 }

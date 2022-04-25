@@ -14,7 +14,7 @@ const auth = {
     async login({dispatch}, credentials) {
       await axios.post('/api/login', credentials)
       .then((response) => {
-        return dispatch('attempt', response.data)
+        dispatch('attempt', response.data)
       })
       .catch((errors) => {
         dispatch('error', errors.response.data.errors)
@@ -53,7 +53,7 @@ const auth = {
   },
 
   mutations: {
-    SHOW_ERRORS(state, errors) {
+    SHOW_ERRORS(state, payload) {
       state.errors = errors;
     },
     SET_TOKEN(state, payload) {

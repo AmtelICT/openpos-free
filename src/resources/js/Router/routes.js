@@ -44,11 +44,20 @@ const routes = [
         }
       },
       {
-        path: '/empleados',
+        path: '/employees',
         name: 'employee',
-        component: () => import(/* webpackChunkName: "empleados" */ '../Pages/Employee.vue'),
+        component: () => import(/* webpackChunkName: "employees" */ '../Pages/Employee.vue'),
         meta: {
-          title: 'Empleados',
+          title: 'Employees',
+          requiresAuth: true,
+        }
+      },
+      {
+        path: '/configuration',
+        name: 'configuration',
+        component: () => import(/* webpackChunkName: "configuration" */ '../Pages/Configuration.vue'),
+        meta: {
+          title: 'Configuration',
           requiresAuth: true,
         }
       }

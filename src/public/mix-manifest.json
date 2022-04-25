@@ -5,6 +5,7 @@
     "/js/welcome.js": "/js/welcome.js",
     "/js/settings.js": "/js/settings.js",
     "/js/dashboard.js": "/js/dashboard.js",
-    "/js/empleados.js": "/js/empleados.js",
+    "/js/employees.js": "/js/employees.js",
+    "/js/configuration.js": "/js/configuration.js",
     "/css/app.css": "/css/app.css"
 }
