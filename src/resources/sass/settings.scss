@@ -2,14 +2,12 @@
   height: calc(100vh) !important;
   position: fixed;
   .sidebar-list {
-     /*top: calc(50% - 200px);*/
     position: relative;
     height: 486px;
     top: 50%;
     transform: translateY(-50%);
   }
   .sidebar-list-common {
-    /*top: calc(50% - 200px);*/
    position: relative;
    height: 329px;
    top: 50%;
@@ -20,6 +18,10 @@
   width: calc(100vw - 108px) !important;
   margin-left: 108px;
   background-color: $black !important;
+}
+
+.v-list-item__subtitle {
+  padding-bottom: 1px;
 }
 
 .sidebar-list-content {

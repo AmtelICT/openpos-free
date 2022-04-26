@@ -1,17 +1,16 @@
 body {
   font-family: $roboto !important; 
- // overflow-y: hidden !important;
 }
 body, .v-main__wrap {
-background-color: $body-bg !important;
+  background-color: $body-bg !important;
 }
 
 .brand-title {
-font-family: $lobster !important;
+  font-family: $lobster !important;
 }
 
 .v-toolbar, .v-toolbar--dense .v-app-bar {
-background-color: #202124 ;//$black;
+  background-color: #202124 ;//$black;
 }
 
 .noselect {
@@ -25,7 +24,7 @@ background-color: #202124 ;//$black;
 }
 
 .v-messages__message {
-color: #ff5252 !important;
+  color: #ff5252 !important;
 }
 
 .v-radio {
@@ -33,4 +32,9 @@ color: #ff5252 !important;
   &:active {
     background-color: transparent !important;
   }
+}
+
+.vcard-table {
+  position: relative;
+  border-radius: 0px !important;
 }

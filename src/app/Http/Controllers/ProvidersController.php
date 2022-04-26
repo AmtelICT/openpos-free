@@ -15,15 +15,16 @@ class ProvidersController extends Controller
   public function store(Request $request)
   {
      $this->validate($request, [
-      'company'   => 'required',
-      'phone'     => 'required',
-      'state_id'  => 'required',
-      'city_id'   => 'required',
-      'address'   => 'required'
+      'company'     => 'required',
+      'phone'       => 'required',
+      'country_id'  => 'required',
+      'state_id'    => 'required',
+      'city_id'     => 'required',
+      'address'     => 'required'
      ]);
 
      Provider::create($request->all());
-     return response()->json(['A new provider was added !'], 201);
+     return response()->json(['A new provider was added!'], 201);
   }
 
   public function update(Request $request)
@@ -33,7 +34,7 @@ class ProvidersController extends Controller
 
     $provider->update($request->all());
 
-    return response()->json(['A registry was updated !'], 201);
+    return response()->json(['A registry was updated!'], 201);
   }
 
   public function delete($id)

@@ -13,6 +13,7 @@ class Provider extends Model
       'company',
       'email',
       'phone',
+      'country_id',
       'state_id',
       'city_id',
       'address'

@@ -9,7 +9,7 @@ const employee = {
 
     created: false,
     edition: false,
-    editmode: []
+    data: []
   },
 
   actions: {
@@ -38,7 +38,7 @@ const employee = {
     async retrieve({commit}, id) {
       await axios.get('/api/employees/'+ id)
       .then((response) => {
-        commit('SET_MODE', response.data)
+        commit('SET_DATA', response.data)
         commit('SET_EDITION', true)
       })
       .catch((errors) => {
@@ -87,8 +87,8 @@ const employee = {
       state.errors = payload
     },
 
-    SET_MODE(state, payload) {
-      state.editmode = payload
+    SET_DATA(state, payload) {
+      state.data = payload
     },
 
     SET_EDITION(state, payload) {
@@ -101,7 +101,7 @@ const employee = {
 
     CLEAR(state) {
       state.errors = []
-      state.editmode = []
+      state.data = []
     }
   },
 
@@ -118,8 +118,8 @@ const employee = {
       return state.created
     },
 
-    editmode(state) {
-      return state.editmode
+    data(state) {
+      return state.data
     },
 
     edition(state) {

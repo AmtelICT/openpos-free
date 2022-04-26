@@ -6,6 +6,7 @@ import location from './modules/location'
 import welcome from './modules/welcome'
 import configuration from './modules/configuration'
 import employee from './modules/employee'
+import provider from './modules/provider'
 
 Vue.use(Vuex);
 
@@ -15,7 +16,8 @@ const store = new Vuex.Store({
     location,
     welcome,
     configuration,
-    employee
+    employee,
+    provider
   }
 })
 

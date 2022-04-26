@@ -60,6 +60,15 @@ const routes = [
           title: 'Configuration',
           requiresAuth: true,
         }
+      },
+      {
+        path: '/providers',
+        name: 'provider',
+        component: () => import(/* webpackChunkName: "providers" */ '../Pages/Provider.vue'),
+        meta: {
+          title: 'Providers',
+          requiresAuth: true,
+        }
       }
     ]
   }

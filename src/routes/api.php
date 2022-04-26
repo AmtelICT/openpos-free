@@ -32,7 +32,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
 // Public Country routes
 Route::get('/countries', [CountriesController::class, 'index']);
-Route::get('/country/{id}', [CountriesController::class, 'show']);
 // Public State routes
 Route::get('/states/{id}', [StatesController::class, 'index']);
 // Public City routes

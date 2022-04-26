@@ -32,7 +32,7 @@ class EmployeesController extends Controller
       'phone'     => $request->phone
     ]);
 
-    return response()->json(['A new employee was successfull added !'], 201);
+    return response()->json(['A new employee was successfull added!'], 201);
   }
 
   public function update(Request $request)
@@ -58,7 +58,7 @@ class EmployeesController extends Controller
     $user->delete();
     $employee->delete();
     
-    return response()->json(['A registry was deleted !'], 201);
+    return response()->json(['A registry was deleted!'], 201);
   }
 
   public function query($id)

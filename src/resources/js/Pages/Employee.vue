@@ -182,15 +182,6 @@
       timeout="1000"
       transition="scroll-y-transition">
       {{ text }}
-      <template v-slot:action="{ attrs }">
-        <v-btn
-          color="pink"
-          text
-          v-bind="attrs"
-          @click="snackbar = false">
-          Close
-        </v-btn>
-      </template>
     </v-snackbar>
     <!-- /snackbar -->
 
@@ -250,12 +241,11 @@ export default {
   }),
   computed: {
     ...mapGetters({
-      employees: 'employee/employees',
-      errors:    'employee/errors',
-      created:   'employee/created',
-
-      editmode:  'employee/editmode',
-      edition:   'employee/edition'
+      employees:  'employee/employees',
+      errors:     'employee/errors',
+      created:    'employee/created',
+      data:       'employee/data',
+      edition:    'employee/edition'
     }),
     headers () {
       return [
@@ -348,7 +338,7 @@ export default {
     edit(id) {
       this.retrieve(id)
       .then(() => {
-        this.form = this.editmode
+        this.form = this.data
         this.open()
       })
     },

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('company');
             $table->string('email')->unique()->nullable()->default(null);
             $table->string('phone');
+            $table->string('country_id');
             $table->string('state_id');
             $table->string('city_id');
             $table->string('address');

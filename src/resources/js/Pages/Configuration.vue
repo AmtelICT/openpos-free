@@ -1,8 +1,8 @@
 <template>
   <div class="configuration">
-    <v-card class="vcard-container" v-if="form">
+    <v-card class="vcard-container">
       <div class="internal-form container">
-        <v-form ref="form" lazy-validation class="configuration-form">
+        <v-form ref="form" lazy-validation class="configuration-form" elevation="0">
           <v-row>
             <v-col cols="12" md="6">
               <v-text-field
@@ -231,14 +231,12 @@ import {mapGetters, mapActions} from 'vuex'
       }
     },
 
-    mounted() {
+    created() {
       this.populate()
-      .then(() => {
-        this.get_countries()
-        this.get_states(this.config.country_id)
-        this.get_cities(this.config.state_id)
-        this.set_values()
-      })
+      this.get_countries()
+      this.get_states(this.config.country_id)
+      this.get_cities(this.config.state_id)
+      this.set_values()
     }
   }
 </script>

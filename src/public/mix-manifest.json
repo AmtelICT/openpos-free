@@ -7,5 +7,6 @@
     "/js/dashboard.js": "/js/dashboard.js",
     "/js/employees.js": "/js/employees.js",
     "/js/configuration.js": "/js/configuration.js",
+    "/js/providers.js": "/js/providers.js",
     "/css/app.css": "/css/app.css"
 }
