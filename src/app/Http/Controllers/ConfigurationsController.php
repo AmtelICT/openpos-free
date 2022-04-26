@@ -48,7 +48,7 @@ class ConfigurationsController extends Controller
 
   public function index() 
   {
-    $configuration = Configuration::all()->first();
+    $configuration = Configuration::first();
     return response()->json($configuration, 200);
   }
 

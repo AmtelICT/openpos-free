@@ -9,7 +9,10 @@ class ProvidersController extends Controller
 {
   public function index()
   {
-    return Provider::all();
+    return Provider::join('states', 'providers.state_id', '=', 'states.id')
+    ->join('cities', 'providers.city_id', '=', 'cities.id')
+    ->select('providers.*', 'states.name as statename', 'cities.name as cityname')
+    ->get();
   }
 
   public function store(Request $request)

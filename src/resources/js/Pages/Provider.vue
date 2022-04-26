@@ -78,8 +78,7 @@
                   item-value="id"
                   label="Select state"
                   :rules="stateRules"
-                  return-object
-                  @input="trigger_retrieve"
+                  @input="set_state"
                   v-model="selected_state">
                   <v-icon
                     slot="prepend-inner"
@@ -265,7 +264,9 @@ export default {
       editmode:  'provider/editmode',
       edition:   'provider/edition',
       states:    'location/states',
+      state:     'location/state',
       cities:    'location/cities',
+      city:      'location/city',
 
       config:     'configuration/config'
     }),
@@ -281,12 +282,12 @@ export default {
         },
         { 
           text: 'State', 
-          value: 'state',
+          value: 'statename',
           width: '16.666666667%'
         },
         { 
           text: 'City', 
-          value: 'city',
+          value: 'cityname',
           width: '16.666666667%'
         },
         { 
@@ -330,8 +331,9 @@ export default {
       clear:          'provider/clear',
 
       get_states:     'location/get_states',
+      get_state:      'location/get_state',
       get_cities:     'location/get_cities',
-      get_id:         'location/get_id',
+      get_city:       'location/get_city',
 
       get_config:     'configuration/populate'
     }),
@@ -342,6 +344,16 @@ export default {
 
     loading(id) {
       this.loader = id
+    },
+
+    set_state: function() {
+      this.form.country_id = this.selected_country
+      this.form.state_id = this.selected_state
+      this.get_cities(this.selected_state)
+    },
+
+    set_city: function () {
+      this.form.city_id = this.selected_city
     },
 
     open() {
@@ -362,14 +374,20 @@ export default {
       this.dialog = false
     },
 
+    close_dialog() {
+      this.form = {}
+      this.selected_state = null
+      this.selected_city = null
+      this.confirmation = false
+    },
+
     submit_record() {
-      console.log(this.form)
-      const valid = false//this.$refs.form.validate()
+      const valid = this.$refs.form.validate()
       if(valid) {
         this.register(this.form)
         .then(() => {
           if(this.created === true) {
-            this.text = `Se ha registrado un nuevo proveedor!`
+            this.text = `A new registry was succesful added!`
             this.snackbar = true
             this.close()
           }
@@ -380,17 +398,19 @@ export default {
 
     async edit(id) {
       await this.retrieve(id)
-      await this.get_id(this.editmode.state)
       this.form = this.editmode
-      this.selected_state = this.editmode.state
-      this.selected_city = this.editmode.city
+      await this.get_state(this.editmode.state_id)
+      this.selected_state = this.state
+      await this.get_cities(this.selected_state.id)
+      await this.get_city(this.editmode.city_id)
+      this.selected_city = this.city
       this.open()
     },
 
     update_record() {
       this.update(this.form)
       .then(() => {
-        this.text = `Se ha actualizado un registro!`
+        this.text = `A registry was updated!`
         this.snackbar = true
         this.close()
       })
@@ -409,36 +429,19 @@ export default {
       this.close_dialog()
     },
 
-    close_dialog() {
-      this.form = {}
-      this.selected_state = null
-      this.selected_city = null
-      this.confirmation = false
-    },
-
-    trigger_retrieve: function() {
-      this.form.state_id = this.selected_state.id
-      this.get_cities(this.selected_state.id)
-    },
-
-    set_city: function () {
-      this.form.city_id = this.selected_city
-    },
-
     filterOnlyCapsText (value, search) {
       return value != null &&
         search != null &&
         typeof value === 'string' &&
         value.toString().toLocaleUpperCase().indexOf(search) !== -1
-    },
+    }
   },
-  created() {
-    this.populate()
-    this.get_config()
-    .then(() => {
-      this.get_states(this.config.country_id)
-      this.selected_country = this.config.country_id
-    })
+
+  async created() {
+    await this.populate()
+    await this.get_config()
+    this.get_states(this.config.country_id)
+    this.selected_country = this.config.country_id
   },
 }
 </script>

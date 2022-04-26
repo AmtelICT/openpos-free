@@ -13,4 +13,11 @@ class StatesController extends Controller
 
     return $states;
   }
+
+  public function state($id)
+  {
+    $state = State::where('id', '=', $id)->first();
+
+    return $state;
+  }
 }

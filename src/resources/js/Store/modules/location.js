@@ -6,6 +6,7 @@ const location = {
   state: {
     countries: [],
     states: [],
+    state: null,
     cities: []
   },
 
@@ -15,9 +16,6 @@ const location = {
       .then((response) => {
         commit('SET_COUNTRIES', response.data)
       })
-      .catch((errors) => {
-        console.log(errors.response.data.errors)
-      })
     },
 
     async get_states({commit}, id) {
@@ -25,8 +23,12 @@ const location = {
       .then((response) => {
         commit('SET_STATES', response.data)
       })
-      .catch((errors) => {
-        console.log(errors.response.data.errors)
+    },
+
+    async get_state({commit}, id) {
+      await axios.get('/api/state/' + id)
+      .then((response) => {
+        commit('SET_STATE', response.data)
       })
     },
 
@@ -35,8 +37,12 @@ const location = {
       .then((response) => {
         commit('SET_CITIES', response.data)
       })
-      .catch((errors) => {
-        console.log(errors.response.data.errors)
+    },
+
+    async get_city({commit}, id) {
+      await axios.get('/api/city/' + id) 
+      .then((response) => {
+        commit('SET_CITY', response.data)
       })
     }
   },
@@ -50,8 +56,16 @@ const location = {
       state.states = payload
     },
 
+    SET_STATE(state, payload) {
+      state.state = payload
+    },
+
     SET_CITIES(state, payload) {
       state.cities = payload
+    },
+
+    SET_CITY(state, payload) {
+      state.city = payload
     }
   },
 
@@ -64,8 +78,16 @@ const location = {
       return state.states
     },
 
+    state(state) {
+      return state.state
+    },
+
     cities(state) {
       return state.cities
+    },
+
+    city(state) {
+      return state.city
     }
   }
 }

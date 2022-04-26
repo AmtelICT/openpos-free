@@ -13,4 +13,11 @@ class CitiesController extends Controller
 
     return $cities;
   }
+
+  public function city($id)
+  {
+    $city = City::where('id', '=', $id)->first();
+
+    return $city;
+  }
 }
