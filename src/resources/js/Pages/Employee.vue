@@ -326,7 +326,7 @@ export default {
         this.register(this.form)
         .then(() => {
           if(this.created === true) {
-            this.text = `A new registry was succesful added!`
+            this.text = `Employee registered!`
             this.snackbar = true
             this.close()
           }
@@ -346,7 +346,7 @@ export default {
     update_record() {
       this.update(this.form)
       .then(() => {
-        this.text = `A registry was updated!`
+        this.text = `Registry updated!`
         this.snackbar = true
         this.close()
       })

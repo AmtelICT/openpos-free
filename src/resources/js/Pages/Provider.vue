@@ -261,7 +261,7 @@ export default {
       errors:    'provider/errors',
       created:   'provider/created',
 
-      editmode:  'provider/editmode',
+      data:      'provider/data',
       edition:   'provider/edition',
       states:    'location/states',
       state:     'location/state',
@@ -387,7 +387,7 @@ export default {
         this.register(this.form)
         .then(() => {
           if(this.created === true) {
-            this.text = `A new registry was succesful added!`
+            this.text = `Provider registered!`
             this.snackbar = true
             this.close()
           }
@@ -398,11 +398,11 @@ export default {
 
     async edit(id) {
       await this.retrieve(id)
-      this.form = this.editmode
-      await this.get_state(this.editmode.state_id)
+      this.form = this.data
+      await this.get_state(this.data.state_id)
       this.selected_state = this.state
       await this.get_cities(this.selected_state.id)
-      await this.get_city(this.editmode.city_id)
+      await this.get_city(this.data.city_id)
       this.selected_city = this.city
       this.open()
     },
@@ -410,7 +410,7 @@ export default {
     update_record() {
       this.update(this.form)
       .then(() => {
-        this.text = `A registry was updated!`
+        this.text = `Registry updated!`
         this.snackbar = true
         this.close()
       })

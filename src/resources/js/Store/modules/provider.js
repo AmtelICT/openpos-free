@@ -9,7 +9,7 @@ const provider = {
 
     created: false,
     edition: false,
-    editmode: []
+    data: []
   },
 
   actions: {
@@ -17,9 +17,6 @@ const provider = {
       await axios.get('/api/providers')
       .then((response) => {
         commit('SET_PROVIDERS', response.data)
-      })
-      .catch((errors) => {
-        console.log((errors.response.data.errors))
       })
     },
 
@@ -38,11 +35,8 @@ const provider = {
     async retrieve({commit}, id) {
       await axios.get('/api/providers/'+ id)
       .then((response) => {
-        commit('SET_MODE', response.data)
+        commit('SET_DATA', response.data)
         commit('SET_EDITION', true)
-      })
-      .catch((errors) => {
-        console.log(errors.reponse.data.errors)
       })
     },
 
@@ -51,17 +45,12 @@ const provider = {
       .then(() => {
         dispatch('populate')
       })
-      .catch((errors) => {
-        console.log(errors.response.data.errors)
-      })
     },
 
     async delete({dispatch}, payload) {
       await axios.delete('/api/providers/'+payload.id)
       .then(() => {
         dispatch('populate')
-      }).catch((errors) => {
-        console.log(errors.response.data.errors)
       })
     },
 
@@ -87,8 +76,8 @@ const provider = {
       state.errors = payload
     },
 
-    SET_MODE(state, payload) {
-      state.editmode = payload
+    SET_DATA(state, payload) {
+      state.data = payload
     },
 
     SET_EDITION(state, payload) {
@@ -118,8 +107,8 @@ const provider = {
       return state.created
     },
 
-    editmode(state) {
-      return state.editmode
+    data(state) {
+      return state.data
     },
 
     edition(state) {
