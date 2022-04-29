@@ -63,8 +63,7 @@ class EmployeesController extends Controller
 
   public function query($id)
   {
-    return Employee::join(
-      'users', 'employees.user_id', '=', 'users.id')
+    return Employee::join('users', 'employees.user_id', '=', 'users.id')
       ->where('employees.user_id', '=', $id)
       ->first();
   }

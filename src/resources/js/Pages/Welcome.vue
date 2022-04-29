@@ -1,14 +1,14 @@
 <template>
   <div class="welcome">
     <v-stepper v-model="e1" class="stepper-container">
-      <v-stepper-header class="stepper-header">
+      <v-stepper-header class="stepper-header grey darken-4">
         <v-stepper-step
           :complete="e1 > 1"
           step="1">
           Shop details
         </v-stepper-step>
 
-        <v-divider class="stepper-divider"></v-divider>
+        <v-divider class="stepper-divider" :class="{'teal darken-3': e1 === 1}"></v-divider>
 
         <v-stepper-step
           :complete="e1 > 2"
@@ -181,7 +181,7 @@
               Cancel
             </v-btn>
             <v-btn
-              color="success"
+              color="teal darken-4"
               @click="register_shop">
               Continue
             </v-btn>
@@ -267,7 +267,7 @@
               Cancel
             </v-btn>
             <v-btn
-              color="success"
+              color="teal darken-4"
               @click="register_admin">
               Continue
             </v-btn>
@@ -320,7 +320,7 @@
               Cancel
             </v-btn>
             <v-btn
-              color="success"
+              color="teal darken-4"
               @click="register_all">
               Continue
             </v-btn>
@@ -382,7 +382,7 @@ export default {
     ],
     email: [
       v => !!v || 'Email is required',
-      v => (v.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) || 'Invalid Email address'
+      v => /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(v) || 'E-mail must be valid'
     ],
     password: [
       v => !!v || 'A password is required'
@@ -440,17 +440,13 @@ export default {
       }
     },
 
-    register_all() {
+    async register_all() {
       this.shop_form.theme = this.selected_theme
-      this.store_shop(this.shop_form)
+      await this.store_shop(this.shop_form)
+      await this.store_admin(this.admin_form)
+      await this.completed()
       .then(() => {
-        this.store_admin(this.admin_form)
-        .then(() => {
-          this.completed()
-          .then(() => {
-            this.$router.push('/')
-          })
-        })
+        this.$router.push('/')
       })
     }
   },

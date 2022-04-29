@@ -20,8 +20,16 @@ const provider = {
       })
     },
 
+    async retrieve({commit}, id) {
+      await axios.get('/api/provider/'+ id)
+      .then((response) => {
+        commit('SET_DATA', response.data)
+        commit('SET_EDITION', true)
+      })
+    },
+
     async register({commit, dispatch}, form) {
-      await axios.post('/api/providers', form)
+      await axios.post('/api/provider', form)
       .then(() => {
         commit('CLEAR')
         commit('SET_STATUS', true)
@@ -32,23 +40,15 @@ const provider = {
       })
     },
 
-    async retrieve({commit}, id) {
-      await axios.get('/api/providers/'+ id)
-      .then((response) => {
-        commit('SET_DATA', response.data)
-        commit('SET_EDITION', true)
-      })
-    },
-
     async update({dispatch}, payload) {
-      await axios.put('/api/providers/'+payload.id, payload)
+      await axios.put('/api/provider/'+payload.id, payload)
       .then(() => {
         dispatch('populate')
       })
     },
 
     async delete({dispatch}, payload) {
-      await axios.delete('/api/providers/'+payload.id)
+      await axios.delete('/api/provider/'+payload.id)
       .then(() => {
         dispatch('populate')
       })

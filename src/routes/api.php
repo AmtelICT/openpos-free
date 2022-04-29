@@ -9,6 +9,8 @@ use App\Http\Controllers\CitiesController;
 use App\Http\Controllers\ConfigurationsController;
 use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\ProvidersController;
+use App\Http\Controllers\ArticlesController;
+use App\Http\Controllers\StocksController;
 
 // middleware for VUE
 route::get('/checkinstall', [ConfigurationsController::class, 'checkinstall']);
@@ -52,17 +54,30 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 // Protected Employees routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
   Route::get('/employees', [EmployeesController::class, 'index']);
-	Route::get('/employees/{id}', [EmployeesController::class, 'query']);
-	Route::post('/employees', [EmployeesController::class, 'store']);
-	Route::put('/employees/{id}', [EmployeesController::class, 'update']);
-	Route::delete('/employees/{id}', [EmployeesController::class, 'delete']);
+	Route::get('/employee/{id}', [EmployeesController::class, 'query']);
+	Route::post('/employee', [EmployeesController::class, 'store']);
+	Route::put('/employee/{id}', [EmployeesController::class, 'update']);
+	Route::delete('/employee/{id}', [EmployeesController::class, 'delete']);
 });
 
 // Protected Providers routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
   Route::get('/providers', [ProvidersController::class, 'index']);
-  Route::get('/providers/{id}', [ProvidersController::class, 'query']);
-  Route::post('/providers', [ProvidersController::class, 'store']);
-  Route::put('/providers/{id}', [ProvidersController::class, 'update']);
-  Route::delete('/providers/{id}', [ProvidersController::class, 'delete']);
+  Route::get('/provider/{id}', [ProvidersController::class, 'query']);
+  Route::post('/provider', [ProvidersController::class, 'store']);
+  Route::put('/provider/{id}', [ProvidersController::class, 'update']);
+  Route::delete('/provider/{id}', [ProvidersController::class, 'delete']);
 });
+
+// Articles routes
+Route::get('/article/{barcode}', [ArticlesController::class, 'query'])->middleware('auth:sanctum');
+
+// Protected stock routes
+Route::group(['middleware' => ['auth:sanctum']], function () {
+  Route::get('/stocks', [StocksController::class, 'index']);
+  Route::get('/stock/{id}', [StocksController::class, 'query']);
+  Route::post('/stock', [StocksController::class, 'store']);
+  Route::put('/stock/{id}', [StocksController::class, 'update']);
+  Route::put('/stock/buy/{id}', [StocksController::class, 'buy']);
+  Route::delete('/stock/{id}', [StocksController::class, 'delete']);
+}); 

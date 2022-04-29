@@ -52,6 +52,7 @@
           <span v-if="!edition">New provider</span>
           <span v-if="edition">Edit provider</span>
         </v-card-title>
+
         <v-card-text>
           <v-form ref="form" lazy-validation>
             <v-row class="mb-n8">
@@ -154,6 +155,7 @@
             </v-row>
           </v-form>
         </v-card-text>
+        
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="red" text @click="close">Cancel</v-btn>
@@ -268,7 +270,7 @@ export default {
       cities:    'location/cities',
       city:      'location/city',
 
-      config:     'configuration/config'
+      config:    'configuration/config'
     }),
 
     headers () {

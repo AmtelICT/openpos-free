@@ -10,12 +10,13 @@
             label="Search"
             single-line
             hide-details
-            class="mt-n2"
-          ></v-text-field>
+            class="mt-n2">
+          </v-text-field>
           <v-btn @click.stop="dialog = true, toggle_edition(false)"
             color="teal darken-1 mb-2 float-right ml-4 mt-4">
             <v-icon>mdi-plus</v-icon>
-            Add</v-btn>
+            Add
+          </v-btn>
         </v-card-title>
         <v-data-table
           :headers="headers"
@@ -56,120 +57,120 @@
     <!-- dialog -->
     <v-dialog v-model="dialog" width="600" persistent>    
       <v-card>
-      <v-card-title>
-        <span v-if="!edition">New employee</span>
-        <span v-if="edition">Edit employee</span>
-      </v-card-title>
-      <v-card-text>
-        <v-form ref="form" lazy-validation>
-          <v-row class="mb-n8">
-            <v-col cols="6" md="6">
-            <v-text-field
-              outlined
-              label="Username"
-              :rules="nameRules"
-              :error-messages="errors.username"
-              v-model="form.username">
-              <v-icon
-                slot="prepend-inner"
-                color="#9c27b0">
-                mdi-account
-              </v-icon>
-            </v-text-field>
-            </v-col>
-
-            <v-col cols="6" md="6">
-            <v-text-field
-              outlined
-              label="Cashier assigned"
-              :rules="numberRules"
-              v-model="form.terminal">
-              <v-icon
-                slot="prepend-inner"
-                color="#1de9b6">
-                mdi-cash-register
-              </v-icon>
-            </v-text-field>
-            </v-col>
-          </v-row>
-          <v-row class="mb-n8">
-            <v-col cols="6" md="6">
+        <v-card-title>
+          <span v-if="!edition">New employee</span>
+          <span v-if="edition">Edit employee</span>
+        </v-card-title>
+        <v-card-text>
+          <v-form ref="form" lazy-validation>
+            <v-row class="mb-n8">
+              <v-col cols="6" md="6">
               <v-text-field
                 outlined
-                type="tel"
-                label="Phone"
-                :rules="phoneRules"
-                v-model="form.phone">
+                label="Username"
+                :rules="nameRules"
+                :error-messages="errors.username"
+                v-model="form.username">
                 <v-icon
                   slot="prepend-inner"
-                  color="#00bcd4">
-                  mdi-phone
+                  color="#9c27b0">
+                  mdi-account
                 </v-icon>
               </v-text-field>
-            </v-col>
-            <v-col cols="6" md="6">
-              <!-- If New Employee -->
+              </v-col>
+
+              <v-col cols="6" md="6">
               <v-text-field
                 outlined
-                v-if="!edition"
-                label="Password"
-                :rules="passwordRules"
-                :type="show_password ? 'text' : 'password'"
-                :append-icon="show_password ? 'mdi-eye' : 'mdi-eye-off'"
-                @click:append="show_password = !show_password"
-                v-model="form.password">
+                label="Cashier assigned"
+                :rules="numberRules"
+                v-model="form.terminal">
                 <v-icon
                   slot="prepend-inner"
-                  color="#ff9800">
-                  mdi-lock
+                  color="#1de9b6">
+                  mdi-cash-register
                 </v-icon>
               </v-text-field>
-              <!-- /If New Employee -->
-              
-              <!-- If EditMode -->
-              <v-text-field
-                outlined
-                v-if="edition"
-                label="New password"
-                :type="show_password ? 'text' : 'password'"
-                :append-icon="show_password ? 'mdi-eye' : 'mdi-eye-off'"
-                @click:append="show_password = !show_password"
-                color="yellow"
-                v-model="form.password">
-                <v-icon
-                  slot="prepend-inner"
-                  color="yellow">
-                  mdi-lock
-                </v-icon>
-              </v-text-field>
-              <!-- /If EditMode -->
-            </v-col>
-          </v-row>
-        </v-form>
-      </v-card-text>
-      <v-card-actions>
-        <v-spacer></v-spacer>
-        <v-btn color="red" text @click="close">Cancel</v-btn>
+              </v-col>
+            </v-row>
+            <v-row class="mb-n8">
+              <v-col cols="6" md="6">
+                <v-text-field
+                  outlined
+                  type="tel"
+                  label="Phone"
+                  :rules="phoneRules"
+                  v-model="form.phone">
+                  <v-icon
+                    slot="prepend-inner"
+                    color="#00bcd4">
+                    mdi-phone
+                  </v-icon>
+                </v-text-field>
+              </v-col>
+              <v-col cols="6" md="6">
+                <!-- If New Employee -->
+                <v-text-field
+                  outlined
+                  v-if="!edition"
+                  label="Password"
+                  :rules="passwordRules"
+                  :type="show_password ? 'text' : 'password'"
+                  :append-icon="show_password ? 'mdi-eye' : 'mdi-eye-off'"
+                  @click:append="show_password = !show_password"
+                  v-model="form.password">
+                  <v-icon
+                    slot="prepend-inner"
+                    color="#ff9800">
+                    mdi-lock
+                  </v-icon>
+                </v-text-field>
+                <!-- /If New Employee -->
+                
+                <!-- If EditMode -->
+                <v-text-field
+                  outlined
+                  v-if="edition"
+                  label="New password"
+                  :type="show_password ? 'text' : 'password'"
+                  :append-icon="show_password ? 'mdi-eye' : 'mdi-eye-off'"
+                  @click:append="show_password = !show_password"
+                  color="yellow"
+                  v-model="form.password">
+                  <v-icon
+                    slot="prepend-inner"
+                    color="yellow">
+                    mdi-lock
+                  </v-icon>
+                </v-text-field>
+                <!-- /If EditMode -->
+              </v-col>
+            </v-row>
+          </v-form>
+        </v-card-text>
 
-        <!-- If New Employee -->
-        <v-btn v-if="!edition" 
-          color="teal" 
-          @click="submit_record"
-          ref="save_btn">
-          Save
-        </v-btn>
-        <!-- /If New Employee -->
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="red" text @click="close">Cancel</v-btn>
 
-        <!-- If EditMode -->
-        <v-btn v-if="edition"
-          color="teal"
-          @click="update_record"
-          ref="save_btn">
-          Save changes
-        </v-btn>
-        <!-- /If EditMode -->
+          <!-- If New Employee -->
+          <v-btn v-if="!edition" 
+            color="teal" 
+            @click="submit_record"
+            ref="save_btn">
+            Save
+          </v-btn>
+          <!-- /If New Employee -->
 
-      </v-card-actions>
+          <!-- If EditMode -->
+          <v-btn v-if="edition"
+            color="teal"
+            @click="update_record"
+            ref="save_btn">
+            Save changes
+          </v-btn>
+          <!-- /If EditMode -->
+        </v-card-actions>
       </v-card>
     </v-dialog>
     <!-- /dialog -->

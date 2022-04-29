@@ -54,7 +54,7 @@ const auth = {
 
   mutations: {
     SHOW_ERRORS(state, payload) {
-      state.errors = errors;
+      state.errors = payload;
     },
     SET_TOKEN(state, payload) {
       state.token = payload

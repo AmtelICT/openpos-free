@@ -16,19 +16,22 @@ return new class extends Migration
         Schema::create('providers', function (Blueprint $table) {
             $table->id();
             $table->string('company');
-            $table->string('email')->unique()->nullable()->default(null);
+            $table->string('email')->unique()->nullable();
             $table->string('phone');
             $table->string('country_id');
             $table->string('state_id');
             $table->string('city_id');
             $table->string('address');
             $table->timestamps();
+            $table->foreign('country_id')->references('id')->on('countries')
+              ->onUpdate('cascade')
+              ->onDelete('cascade');
             $table->foreign('state_id')->references('id')->on('states')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
+              ->onUpdate('cascade')
+              ->onDelete('cascade');
             $table->foreign('city_id')->references('id')->on('cities')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
+              ->onUpdate('cascade')
+              ->onDelete('cascade');
         });
     }
 

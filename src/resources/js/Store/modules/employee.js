@@ -18,13 +18,18 @@ const employee = {
       .then((response) => {
         commit('SET_EMPLOYEES', response.data)
       })
-      .catch((errors) => {
-        console.log((errors.response.data.errors))
+    },
+
+    async retrieve({commit}, id) {
+      await axios.get('/api/employee/'+ id)
+      .then((response) => {
+        commit('SET_DATA', response.data)
+        commit('SET_EDITION', true)
       })
     },
 
     async register({commit, dispatch}, form) {
-      await axios.post('/api/employees', form)
+      await axios.post('/api/employee', form)
       .then(() => {
         commit('CLEAR')
         commit('SET_STATUS', true)
@@ -35,19 +40,8 @@ const employee = {
       })
     },
 
-    async retrieve({commit}, id) {
-      await axios.get('/api/employees/'+ id)
-      .then((response) => {
-        commit('SET_DATA', response.data)
-        commit('SET_EDITION', true)
-      })
-      .catch((errors) => {
-        console.log(errors.reponse.data.errors)
-      })
-    },
-
     async update({dispatch}, payload) {
-      await axios.put('/api/employees/'+payload.id, payload)
+      await axios.put('/api/employee/'+payload.id, payload)
       .then(() => {
         dispatch('populate')
       })
@@ -57,7 +51,7 @@ const employee = {
     },
 
     async delete({dispatch}, payload) {
-      await axios.delete('/api/employees/'+payload.id)
+      await axios.delete('/api/employee/'+payload.id)
       .then(() => {
         dispatch('populate')
       }).catch((errors) => {

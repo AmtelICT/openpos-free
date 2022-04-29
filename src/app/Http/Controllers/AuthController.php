@@ -35,9 +35,7 @@ class AuthController extends Controller
     ];
 
     $configuration = Configuration::all()->first();
-    $configuration->update([
-      'status' => 'closed'
-    ]);
+    $configuration->update(['status' => 'closed']);
 
     return response($response, 201);
   }

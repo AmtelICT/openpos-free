@@ -8,5 +8,6 @@
     "/js/employees.js": "/js/employees.js",
     "/js/configuration.js": "/js/configuration.js",
     "/js/providers.js": "/js/providers.js",
+    "/js/stock.js": "/js/stock.js",
     "/css/app.css": "/css/app.css"
 }
