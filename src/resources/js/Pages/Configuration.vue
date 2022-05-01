@@ -124,7 +124,6 @@
               <div class="theme-label">Theme</div>
               <v-radio-group
                   active-class="active"
-                  
                   v-model="form.theme"
                   row>
                   <v-col cols="6" md="6">
@@ -157,7 +156,7 @@
             <v-col cols="12" md="6">
               <div class="update_conf">
                 <v-btn
-                  color="teal accent-4"
+                  color="teal darken-2"
                   @click="save_changes">
                   Save changes
                 </v-btn>
@@ -211,7 +210,6 @@ import {mapGetters, mapActions} from 'vuex'
 
     methods: {
       ...mapActions({
-        populate:       'configuration/populate',
         get_countries:  'location/get_countries',
         get_states:     'location/get_states',
         get_cities:     'location/get_cities',
@@ -231,10 +229,10 @@ import {mapGetters, mapActions} from 'vuex'
       },
 
       set_values() {
+        this.form = this.config
         this.selected_country = this.config.country_id
         this.selected_state = this.config.state_id
         this.selected_city = this.config.city_id
-        this.form = this.config
       },
 
       save_changes() {
@@ -245,8 +243,7 @@ import {mapGetters, mapActions} from 'vuex'
       }
     },
 
-    created() {
-      this.populate()
+   created() {
       this.get_countries()
       this.get_states(this.config.country_id)
       this.get_cities(this.config.state_id)

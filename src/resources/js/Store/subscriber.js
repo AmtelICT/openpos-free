@@ -7,6 +7,9 @@ store.subscribe((mutation) => {
       if(mutation.payload) {
         axios.defaults.headers.common['Authorization'] = `Bearer ${mutation.payload}`
         localStorage.setItem('token', mutation.payload)
+
+        // Populate configurations
+        store.dispatch('configuration/populate')
       } else {
         axios.defaults.headers.common['Authorization'] = null
         localStorage.removeItem('token', mutation.payload)

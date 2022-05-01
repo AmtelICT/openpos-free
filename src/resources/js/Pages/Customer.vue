@@ -347,9 +347,7 @@ export default {
       get_states:     'location/get_states',
       get_state:      'location/get_state',
       get_cities:     'location/get_cities',
-      get_city:       'location/get_city',
-
-      get_config:     'configuration/populate'
+      get_city:       'location/get_city'
     }),
 
     onResize () {
@@ -453,7 +451,6 @@ export default {
   
   async created() {
     await this.populate()
-    await this.get_config()
     this.get_states(this.config.country_id)
     this.selected_country = this.config.country_id
   },
