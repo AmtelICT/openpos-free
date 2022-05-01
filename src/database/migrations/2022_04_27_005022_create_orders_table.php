@@ -16,24 +16,24 @@ return new class extends Migration
     Schema::create('orders', function (Blueprint $table) {
       $table->id();
       $table->unsignedBigInteger('customer_id')->nullable();
-      $table->unsignedBigInteger('article_id');
+      $table->unsignedBigInteger('article_id')->nullable();
       $table->BigInteger('quantity')->unsigned();
       $table->decimal('amount', 8, 2);
       $table->string('order_number');
       $table->string('status')->default('pending');
-      $table->decimal('discount', 8, 2)->default(0);
+      $table->integer('discount')->default(0);
 
       $table->foreign('customer_id')
         ->references('id')
         ->on('customers')
         ->onUpdate('cascade')
-        ->onDelete('cascade');
+        ->onDelete('set null');
 
       $table->foreign('article_id')
         ->references('id')
         ->on('articles')
         ->onUpdate('cascade')
-        ->onDelete('cascade');
+        ->onDelete('set null');
       $table->timestamps();
     });
   }

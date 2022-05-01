@@ -9,5 +9,6 @@
     "/js/configuration.js": "/js/configuration.js",
     "/js/providers.js": "/js/providers.js",
     "/js/stock.js": "/js/stock.js",
+    "/js/customers.js": "/js/customers.js",
     "/css/app.css": "/css/app.css"
 }

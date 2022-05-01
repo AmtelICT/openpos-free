@@ -21,19 +21,13 @@ return new class extends Migration
       $table->decimal('subtotal', 8, 2)->default(0);
       $table->decimal('total', 8, 2)->default(0);
       $table->string('status')->default('pending');
-      $table->decimal('discount', 8, 2)->default(0);
+      $table->integer('discount')->default(0);
 
       $table->foreign('customer_id')
         ->references('id')
         ->on('customers')
         ->onUpdate('cascade')
-        ->onDelete('cascade');
-
-      $table->foreign('order_number')
-        ->references('order_number')
-        ->on('orders')
-        ->onUpdate('cascade')
-        ->onDelete('cascade');
+        ->onDelete('set null');
       $table->timestamps();
     });
   }

@@ -30,6 +30,9 @@
           <template v-slot:[`item.price`]="{ item }">
             {{ item.price | toUYU }}
           </template>
+          <template v-slot:[`item.points`]="{ item }">
+            {{ item.points | plus }}
+          </template>
           <template v-slot:[`item.actions`]="{ item }">
             <v-btn
               icon 
@@ -41,10 +44,16 @@
             </v-btn>
 
             <v-btn
-              icon 
-              :loading="loader === item.id">
+              icon>
               <v-icon small class="sale-icon">
                 mdi-sale
+              </v-icon>
+            </v-btn>
+
+            <v-btn
+              icon>
+              <v-icon small class="points-icon">
+                mdi-diamond-stone
               </v-icon>
             </v-btn>
 
@@ -392,7 +401,7 @@ export default {
       errors:   'stock/errors',
       created:  'stock/created',
 
-      editmode: 'stock/editmode',
+      data:     'stock/data',
       edition:  'stock/edition'
     }),
     headers () {
@@ -402,18 +411,39 @@ export default {
           align: 'start',
           sortable: false,
           value: 'name',
-          width: '25%'
+          width: '16.6666667%'
         },
         {
           text: 'Measure',
           value: 'measure',
-          width: '25%'
+          width: '16.6666667%'
         },
-        { text: 'Price', value: 'price',  
-        width: '25%'},
-        { text: 'Stock', value: 'stock', 
-        width: '25%'},
-        { text: 'Actions', value: 'actions', sortable: false, align: 'center', width: '150px' },
+        { 
+          text: 'Price', 
+          value: 'price',  
+          width: '16.6666667%'
+        },
+        { 
+          text: 'Stock', 
+          value: 'stock', 
+          width: '16.6666667%'
+        },
+        { 
+          text: 'Discount', 
+          value: 'discount', 
+          width: '16.6666667%'
+        }, 
+        { 
+          text: 'Points', 
+          value: 'points', 
+          width: '16.6666667%'
+        }, 
+        { 
+          text: 'Actions', 
+          value: 'actions', 
+          sortable: false, 
+          align: 'center', 
+          width: '190px' },
       ]
     }
   },
@@ -518,8 +548,8 @@ export default {
       await this.retrieve(id)
       .then(() => {
         this.toggle_edition(true)
-        this.form = this.editmode
-        this.form.quantity = this.editmode.stock
+        this.form = this.data
+        this.form.quantity = this.data.stock
         this.open()
       })
     },

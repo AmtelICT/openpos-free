@@ -15,8 +15,8 @@ return new class extends Migration
   {
     Schema::create('expenses', function (Blueprint $table) {
       $table->id();
-      $table->unsignedBigInteger('article_id');
-      $table->unsignedBigInteger('provider_id');
+      $table->unsignedBigInteger('article_id')->nullable();
+      $table->unsignedBigInteger('provider_id')->nullable();
       $table->decimal('total', 8, 2);
       $table->bigInteger('quantity')->unsigned();
 
@@ -24,13 +24,13 @@ return new class extends Migration
         ->references('id')
         ->on('articles')
         ->onUpdate('cascade')
-        ->onDelete('cascade');
+        ->onDelete('set null');
 
       $table->foreign('provider_id')
         ->references('id')
         ->on('providers')
         ->onUpdate('cascade')
-        ->onDelete('cascade');
+        ->onDelete('set null');
       $table->timestamps();
     });
   }

@@ -11,6 +11,7 @@ use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\ProvidersController;
 use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\StocksController;
+use App\Http\Controllers\CustomersController;
 
 // middleware for VUE
 route::get('/checkinstall', [ConfigurationsController::class, 'checkinstall']);
@@ -69,7 +70,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
   Route::delete('/provider/{id}', [ProvidersController::class, 'delete']);
 });
 
-// Articles routes
+// Protected article routes
 Route::get('/article/{barcode}', [ArticlesController::class, 'query'])->middleware('auth:sanctum');
 
 // Protected stock routes
@@ -81,3 +82,12 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
   Route::put('/stock/buy/{id}', [StocksController::class, 'buy']);
   Route::delete('/stock/{id}', [StocksController::class, 'delete']);
 }); 
+
+// Protected  customers routes
+Route::group(['middleware' => ['auth:sanctum']], function () {
+  Route::get('/customers', [CustomersController::class, 'index']);
+  Route::get('/customer/{id}', [CustomersController::class, 'query']);
+  Route::post('/customer', [CustomersController::class, 'store']);
+  Route::put('/customer/{id}', [CustomersController::class, 'update']);
+  Route::delete('/customer/{id}', [CustomersController::class, 'delete']);
+});

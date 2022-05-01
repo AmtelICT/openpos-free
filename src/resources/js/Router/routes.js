@@ -78,6 +78,15 @@ const routes = [
           title: 'Stock',
           requiresAuth: true,
         }
+      },
+      {
+        path: '/customers',
+        name: 'customer',
+        component: () => import(/* webpackChunkName: "customers" */ '../Pages/Customer.vue'),
+        meta: {
+          title: 'Customers',
+          requiresAuth: true,
+        }
       }
     ]
   }

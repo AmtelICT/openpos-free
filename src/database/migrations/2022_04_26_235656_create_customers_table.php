@@ -16,8 +16,7 @@ return new class extends Migration
     Schema::create('customers', function (Blueprint $table) {
       $table->id();
       $table->string('name');
-      $table->string('surname');
-      $table->decimal('intake', 8, 2)->default(0);
+      $table->bigInteger('points')->unsigned()->default(0);
       $table->string('dni');
       $table->string('phone');
       $table->string('country_id');

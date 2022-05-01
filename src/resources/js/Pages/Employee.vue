@@ -129,7 +129,10 @@
                 
                 <!-- If EditMode -->
                 <v-text-field
+                  ref="newpass"
+                  :disabled="!change_password"
                   outlined
+                  placeholder="***********"
                   v-if="edition"
                   label="New password"
                   :type="show_password ? 'text' : 'password'"
@@ -139,11 +142,21 @@
                   v-model="form.password">
                   <v-icon
                     slot="prepend-inner"
-                    color="yellow">
+                    :color="!change_password ? 'grey' : 'yellow'">
                     mdi-lock
                   </v-icon>
                 </v-text-field>
                 <!-- /If EditMode -->
+              </v-col>
+            </v-row>
+            <v-row class="mb-n8 mt-n10">
+              <v-col cols="6" md="6" class="mb-n8">
+                <v-switch
+                  class="change_password"
+                  v-model="change_password"
+                  label="Change password"
+                  @click="change_pass">
+                </v-switch>
               </v-col>
             </v-row>
           </v-form>
@@ -211,6 +224,7 @@ export default {
     form: {},
     search: '',
     show_password: false,
+    change_password: false,
     
     loader: null,
 
@@ -304,6 +318,12 @@ export default {
 
     loading(id) {
       this.loader = id
+    },
+
+    change_pass() {
+      if (this.change_password) {
+        setTimeout(() => this.$refs.newpass.focus(), 100)
+      }
     },
 
     open() {

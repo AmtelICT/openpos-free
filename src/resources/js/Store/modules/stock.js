@@ -11,7 +11,7 @@ const stock = {
 
     created: false,
     edition: false,
-    editmode: []
+    data: []
   },
 
   actions: {
@@ -25,7 +25,7 @@ const stock = {
     async retrieve({commit}, id) {
       await axios.get('/api/stock/'+ id)
       .then((response) => {
-        commit('SET_MODE', response.data)
+        commit('SET_DATA', response.data)
         commit('SET_EDITION', true)
       })
     },
@@ -53,8 +53,6 @@ const stock = {
       await axios.delete('/api/stock/'+payload.id)
       .then(() => {
         dispatch('populate')
-      }).catch((errors) => {
-        console.log(errors.response.data.errors)
       })
     },
 
@@ -69,9 +67,6 @@ const stock = {
       await axios.put('/api/stock/buy/'+ payload.id, payload)
       .then(() => {
         dispatch('populate')
-      })
-      .catch((errors) => {
-        commit('SHOW_ERRORS', errors.response.data.errors)
       })
     },
 
@@ -109,8 +104,8 @@ const stock = {
       state.errors = payload
     },
 
-    SET_MODE(state, payload) {
-      state.editmode = payload
+    SET_DATA(state, payload) {
+      state.data = payload
     },
 
     SET_EDITION(state, payload) {
@@ -123,7 +118,7 @@ const stock = {
 
     CLEAR(state) {
       state.errors = []
-      state.editmode = []
+      state.data = []
     }
   },
 
@@ -140,8 +135,8 @@ const stock = {
       return state.created
     },
 
-    editmode(state) {
-      return state.editmode
+    data(state) {
+      return state.data
     },
 
     edition(state) {

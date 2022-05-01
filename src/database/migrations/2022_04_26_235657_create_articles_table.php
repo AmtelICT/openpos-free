@@ -19,7 +19,8 @@ return new class extends Migration
       $table->string('name');
       $table->string('measure');
       $table->decimal('price', 8, 2);
-      $table->decimal('discount', 8, 2)->nullable();
+      $table->integer('discount')->default(0);
+      $table->bigInteger('points')->unsigned()->default(0);
       $table->timestamps();
     });
   }

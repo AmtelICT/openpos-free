@@ -61,11 +61,9 @@ class StocksController extends Controller
       'quantity'      => 'required'
     ]);
 
-    $stock = Stock::where('id', '=', $request->id)
-      ->first();
+    $stock = Stock::where('id', '=', $request->id)->first();
     
-    $article = Article::where('id', '=', $stock->article_id)
-      ->first(); 
+    $article = Article::where('id', '=', $stock->article_id)->first(); 
     
     ExpensesController::store($request, $article);
 

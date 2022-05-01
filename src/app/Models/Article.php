@@ -18,7 +18,8 @@ class Article extends Model
     'name',
     'measure',
     'price',
-    'discount'
+    'discount',
+    'points'
   ];
 
   public function orders()
