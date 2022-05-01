@@ -39,7 +39,7 @@
               @click="loading(item.id), edit(item.id)" 
               :loading="loader === item.id">
               <v-icon small class="edit-icon">
-                mdi-pencil
+                mdi-archive-edit
               </v-icon>
             </v-btn>
 

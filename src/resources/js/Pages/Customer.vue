@@ -34,7 +34,7 @@
             <v-btn icon 
               @click="loading(item.id), edit(item.id)" 
               :loading="loader === item.id">
-              <v-icon small class="edit-icon">mdi-pencil</v-icon>
+              <v-icon small class="edit-icon">mdi-account-edit</v-icon>
             </v-btn>
             <v-btn @click="remove(item)" icon>
               <v-icon small class="delete-icon">mdi-delete</v-icon>

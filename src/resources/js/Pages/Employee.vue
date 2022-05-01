@@ -38,7 +38,7 @@
               edit(item.id)" 
               :loading="loader === item.id">
               <v-icon small class="edit-icon">
-                mdi-pencil
+                mdi-human-edit
               </v-icon>
             </v-btn>
             <v-btn

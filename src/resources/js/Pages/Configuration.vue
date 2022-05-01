@@ -120,22 +120,38 @@
           </v-row>
 
           <v-row>
-            <v-col cols="12" md="6">
+            <v-col cols="12" md="6" class="cfgtheme">
               <div class="theme-label">Theme</div>
               <v-radio-group
-                v-model="form.theme"
-                row>
-                <v-radio
                   active-class="active"
-                  label="light theme"
-                  value="light">
-                </v-radio>
-                <v-radio
-                  active-class="active"
-                  label="dark theme"
-                  value="dark">
-                </v-radio>
-              </v-radio-group>
+                  
+                  v-model="form.theme"
+                  row>
+                  <v-col cols="6" md="6">
+                    <div class="lightCard">
+                      <div class="lttitle">Title</div>
+                      <div class="ltcontent">some example text </div>
+                    </div>
+                     <v-radio
+                      active-class="active"
+                      label="Light theme"
+                      value="light"
+                      color="blue">
+                    </v-radio>
+                  </v-col>
+
+                  <v-col cols="6" md="6">
+                    <div class="darkCard">
+                      <div class="dctitle">Title</div>
+                      <div class="dccontent">some example text </div>
+                    </div>
+                     <v-radio
+                      active-class="active"
+                      label="Dark theme"
+                      value="dark">
+                    </v-radio>
+                  </v-col>
+                </v-radio-group>
             </v-col>
 
             <v-col cols="12" md="6">
