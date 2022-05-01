@@ -149,7 +149,7 @@
                 <!-- /If EditMode -->
               </v-col>
             </v-row>
-            <v-row class="mb-n8 mt-n10">
+            <v-row class="mb-n8 mt-n10" v-if="edition">
               <v-col cols="6" md="6" class="mb-n8">
                 <v-switch
                   class="change_password"

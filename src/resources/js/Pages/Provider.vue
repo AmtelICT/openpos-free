@@ -70,6 +70,24 @@
                   </v-icon>
                 </v-text-field>
               </v-col>
+
+              <v-col cols="12" md="6">
+                <v-text-field
+                  outlined
+                  type="tel"
+                  label="Phone"
+                  :rules="phoneRules"
+                  :error-messages="errors.phone"
+                  v-model="form.phone">
+                  <v-icon
+                    slot="prepend-inner"
+                    color="#00bcd4">
+                    mdi-phone
+                  </v-icon>
+                </v-text-field>
+              </v-col>
+            </v-row>
+            <v-row class="mb-n8">
               <v-col cols="12" md="6">
                 <v-select
                   outlined
@@ -88,8 +106,7 @@
                   </v-icon>
                 </v-select>
               </v-col>
-            </v-row>
-            <v-row class="mb-n8">
+
               <v-col cols="12" md="6">            
                 <v-select
                   outlined
@@ -108,6 +125,8 @@
                   </v-icon>
                 </v-select>
               </v-col>
+            </v-row>
+            <v-row class="mb-n8">
               <v-col cols="12" md="6">
                 <v-text-field
                   outlined
@@ -122,23 +141,7 @@
                   </v-icon>
                 </v-text-field>
               </v-col>
-            </v-row>
-            <v-row class="mb-n8">
-              <v-col cols="12" md="6">
-                <v-text-field
-                  outlined
-                  type="tel"
-                  label="Phone"
-                  :rules="phoneRules"
-                  :error-messages="errors.phone"
-                  v-model="form.phone">
-                  <v-icon
-                    slot="prepend-inner"
-                    color="#00bcd4">
-                    mdi-phone
-                  </v-icon>
-                </v-text-field>
-              </v-col>
+
               <v-col cols="12" md="6">
                 <v-text-field
                   outlined

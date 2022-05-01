@@ -54,6 +54,7 @@
         </v-card-title>
         <v-card-text>
           <v-form ref="form" lazy-validation>
+
             <v-row class="mb-n8">
               <v-col cols="12" md="6">
                 <v-text-field
@@ -70,6 +71,24 @@
                 </v-text-field>
               </v-col>
 
+              <v-col cols="12" md="6">
+                <v-text-field
+                  outlined
+                  type="text"
+                  label="DNI"
+                  :rules="dniRules"
+                  :error-messages="errors.dni"
+                  v-model="form.dni">
+                  <v-icon
+                    slot="prepend-inner"
+                    color="#8bc34a">
+                    mdi-card-account-details
+                  </v-icon>
+                </v-text-field>
+              </v-col>
+            </v-row>
+
+            <v-row class="mb-n8">
               <v-col cols="12" md="6">
                 <v-select
                   outlined
@@ -88,16 +107,14 @@
                   </v-icon>
                 </v-select>
               </v-col>
-            </v-row>
 
-            <v-row class="mb-n8">
               <v-col cols="12" md="6">            
                 <v-autocomplete
                   outlined
                   :items="cities"
                   item-text="name"
                   item-value="id"
-                  label="Ciudad"
+                  label="City"
                   :disabled="!form.state_id"
                   :rules="cityRules"
                   @input="set_city"
@@ -109,6 +126,9 @@
                   </v-icon>
                 </v-autocomplete>
               </v-col>
+            </v-row>
+
+            <v-row class="mb-n8">
               <v-col cols="12" md="6">
                 <v-text-field
                   outlined
@@ -124,24 +144,7 @@
                   </v-icon>
                 </v-text-field>
               </v-col>
-            </v-row>
 
-            <v-row class="mb-n8">
-              <v-col cols="12" md="6">
-                <v-text-field
-                  outlined
-                  type="text"
-                  label="DNI"
-                  :rules="dniRules"
-                  :error-messages="errors.dni"
-                  v-model="form.dni">
-                  <v-icon
-                    slot="prepend-inner"
-                    color="#8bc34a">
-                    mdi-card-account-details
-                  </v-icon>
-                </v-text-field>
-              </v-col>
               <v-col cols="12" md="6">
                 <v-text-field
                   outlined
@@ -159,6 +162,7 @@
               </v-col>
             </v-row>
           </v-form>
+
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
