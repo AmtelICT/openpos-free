@@ -26,7 +26,7 @@
           :search="search"
           :items-per-page="10"
           :sort-desc="true"
-          class="mt-n3">
+          class="mt-n3 table">
           <template v-slot:[`item.price`]="{ item }">
             {{ item.price | toUYU }}
           </template>

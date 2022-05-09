@@ -9,6 +9,8 @@ import employee from './modules/employee'
 import provider from './modules/provider'
 import stock from './modules/stock'
 import customer from './modules/customer'
+import order from './modules/order'
+import invoice from './modules/invoice'
 
 Vue.use(Vuex);
 
@@ -21,7 +23,9 @@ const store = new Vuex.Store({
     employee,
     provider,
     stock,
-    customer
+    customer,
+    order,
+    invoice
   }
 })
 

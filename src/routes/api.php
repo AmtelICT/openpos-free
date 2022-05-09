@@ -12,6 +12,8 @@ use App\Http\Controllers\ProvidersController;
 use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\StocksController;
 use App\Http\Controllers\CustomersController;
+use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\InvoicesController;
 
 // middleware for VUE
 route::get('/checkinstall', [ConfigurationsController::class, 'checkinstall']);
@@ -90,4 +92,25 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
   Route::post('/customer', [CustomersController::class, 'store']);
   Route::put('/customer/{id}', [CustomersController::class, 'update']);
   Route::delete('/customer/{id}', [CustomersController::class, 'delete']);
+});
+
+// Protected order routes
+Route::group(['middleware' => ['auth:sanctum']], function () {
+  Route::get('/orders/{order_number}', [OrdersController::class, 'query']);
+  Route::get('/order/getcode', [OrdersController::class, 'get_code']);
+  Route::get('/order/setcode', [OrdersController::class, 'set_code']);
+  Route::put('/order/{barcode}', [OrdersController::class, 'generate_order']);
+
+
+  Route::put('/order/quantity/{article_id}', [OrdersController::class, 'quantity']);
+  Route::get('/order/delete/{order_number}', [OrdersController::class, 'delete']);
+  Route::delete('/order/cancel/{order_number}', [OrdersController::class, 'cancel']);
+  Route::get('/order/payment/{order_number}', [OrdersController::class, 'payment']);
+  Route::get('/order/discount/{order_number}', [OrdersController::class, 'discount']);
+  Route::get('/order/customer/{order_number}', [OrdersController::class, 'customer']);
+});
+
+// Invoices protected routes
+Route::group(['middleware' => ['auth:sanctum']], function () {
+  Route::get('/invoice/{order_number}', [InvoicesController::class, 'query']);
 });

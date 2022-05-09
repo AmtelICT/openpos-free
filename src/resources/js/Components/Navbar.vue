@@ -1,7 +1,7 @@
 <template>
   <v-app-bar
     dense
-    elevation="12"
+    elevation="0"
     dark
     color="#202124">
     <v-app-bar-nav-icon 

@@ -44,3 +44,7 @@ body, .v-main__wrap {
   margin-right: auto;
   width: 98%;
 }
+
+.theme--dark.v-data-table tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, .5);
+}

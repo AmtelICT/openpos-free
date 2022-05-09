@@ -19,7 +19,7 @@ return new class extends Migration
       $table->unsignedBigInteger('article_id')->nullable();
       $table->BigInteger('quantity')->unsigned();
       $table->decimal('amount', 8, 2);
-      $table->string('order_number');
+      $table->text('order_number');
       $table->string('status')->default('pending');
       $table->integer('discount')->default(0);
 

@@ -1,6 +1,6 @@
 <template>
   <div class="configuration">
-    <v-card class="vcard-container">
+    <v-card class="vcard-container" elevation="0">
       <div class="internal-form container">
         <v-form ref="form" lazy-validation class="configuration-form" elevation="0">
           <v-row>
@@ -123,34 +123,34 @@
             <v-col cols="12" md="6" class="cfgtheme">
               <div class="theme-label">Theme</div>
               <v-radio-group
-                  active-class="active"
-                  v-model="form.theme"
-                  row>
-                  <v-col cols="6" md="6">
-                    <div class="lightCard">
-                      <div class="lttitle">Title</div>
-                      <div class="ltcontent">some example text </div>
-                    </div>
-                     <v-radio
-                      active-class="active"
-                      label="Light theme"
-                      value="light"
-                      color="blue">
-                    </v-radio>
-                  </v-col>
+                active-class="active"
+                v-model="form.theme"
+                row>
+                <v-col cols="6" md="6">
+                  <div class="lightCard">
+                    <div class="lttitle">Title</div>
+                    <div class="ltcontent">some example text </div>
+                  </div>
+                    <v-radio
+                    active-class="active"
+                    label="Light theme"
+                    value="light"
+                    color="blue">
+                  </v-radio>
+                </v-col>
 
-                  <v-col cols="6" md="6">
-                    <div class="darkCard">
-                      <div class="dctitle">Title</div>
-                      <div class="dccontent">some example text </div>
-                    </div>
-                     <v-radio
-                      active-class="active"
-                      label="Dark theme"
-                      value="dark">
-                    </v-radio>
-                  </v-col>
-                </v-radio-group>
+                <v-col cols="6" md="6">
+                  <div class="darkCard">
+                    <div class="dctitle">Title</div>
+                    <div class="dccontent">some example text </div>
+                  </div>
+                    <v-radio
+                    active-class="active"
+                    label="Dark theme"
+                    value="dark">
+                  </v-radio>
+                </v-col>
+              </v-radio-group>
             </v-col>
 
             <v-col cols="12" md="6">
